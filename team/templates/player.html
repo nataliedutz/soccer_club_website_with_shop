@@ -1,0 +1,12 @@
+{% extends "basepage_team_app.html" %}
+
+{% block content %}
+<h1>About Player {{player.id}}</h1>
+<p>Name: {{ player.name }}</p>
+<p>Age: {{ player.age }}</p>
+<p>Position: {{ player.position }}</p>
+<p>Player Profile:</p>
+<p>Height: {{ player.profile.height }}</p>
+<p>Weight: {{ player.profile.weight }}</p>
+<p>Nationality: {{ player.profile.nationality }}</p>
+{% endblock content %}

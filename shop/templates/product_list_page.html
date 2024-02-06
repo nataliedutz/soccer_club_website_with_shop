@@ -1,0 +1,10 @@
+{% extends "basepage_shop_app.html" %}
+{% block content %}
+    <h1>Our Product List</h1>
+    <p>Please click on one of the products to see more info.</p>
+    <ol>
+        {% for product in products %}
+            <li><a href="{% url 'detailed_product_page' product.id %}">{{ product.name }}</a></li>
+        {% endfor %}
+    </ol>
+{% endblock %}
