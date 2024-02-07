@@ -3,10 +3,6 @@
 ## Overview
 The goal of this ongoing project is to create a soccer club website including a shop.
 
-You can have a look at the code for this project here:
-[Link to Master Branch](https://github.com/nataliedutz/soccer_club_page_with_shop/tree/master)
-
-
 ## Development Setup
 
 Before you begin, ensure you have met the following requirements:
