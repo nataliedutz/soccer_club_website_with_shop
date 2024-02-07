@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "team.apps.TeamConfig",
     "shop.apps.ShopConfig",
+    "accounts.apps.AccountsConfig",
 ]
 
 MIDDLEWARE = [
@@ -56,7 +57,11 @@ ROOT_URLCONF = "django_project.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, 'templates')],
+        "DIRS": [
+            os.path.join(BASE_DIR, 'templates'),  
+            os.path.join(BASE_DIR, 'team', 'templates'),
+            os.path.join(BASE_DIR, 'authentication', 'templates'),
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

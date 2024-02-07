@@ -15,8 +15,16 @@
 
     <header>
         <div class="header-content">
-        <h2>Python FC</h2>
+            <h2>Python FC</h2>
+            {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}" class="header-link">Logout</a>
+            {% else %}
+            <a href="{% url 'login' %}" class="header-link">Login</a>
+            <a href="{% url 'signup' %}" class="header-link">Signup</a>
+            {% endif %}
+        </div>
     </header>
+    
 
     <section>
         <nav>
@@ -25,7 +33,6 @@
                 <li><a href="{% url 'about_page' %}"> About</a></li>
                 <li><a href="{% url 'players_page' %}"> Players</a></li>
                 <li><a href="{% url 'shop_home_page' %}"> Shop</a></li>
-
             </ul>
         </nav>
 

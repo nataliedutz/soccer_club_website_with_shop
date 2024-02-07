@@ -13,26 +13,63 @@ body {
 
 /* Style the header */
 header {
-    background-color: #1847a0; /* Violet color */
+    background-color: #1890a0; 
     padding: 30px;
     text-align: center;
     font-size: 35px;
     color: #000000;}
 
+.header-link {
+    display: inline-block;
+    padding: 1px 3px; /* Adjust padding to make the boxes smaller */
+    background-color: #1880a0; ;
+    color: white;
+    border: 2px solid #1880a0; ;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+    
+    /* Add hover effect */
+.header-link:hover {
+    background-color: darkorchid;
+    color: white;
+    border-color: darkorchid;
+}
 
 /* Create two columns/boxes that float next to each other */
 nav {
     float: left;
-    width: 20%;
-    height: 400px;
-    color: #ffffff; /* Dark violet color */
-    padding: 20px;
+    width: 15%; /* Set the width to 20% of the container */
 }
 
-/* Style the list inside the menu */
 nav ul {
     list-style-type: none;
     padding: 0;
+    margin: 0; /* Remove default margin */
+}
+
+nav li {
+    padding: 5px; /* Adjust padding as needed */
+    margin-bottom: 5px; /* Add some space between list items */
+    background-color: #1880a0; 
+    border-radius: 5px; /* Rounded corners */
+}
+
+nav li a {
+    display: block;
+    color: white; /* Text color */
+    text-decoration: none; /* Remove underline */
+    padding: 10px; /* Add padding to create space inside the box */
+}
+
+nav li:hover {
+    background-color: white; /* Change background color on hover */
+}
+
+nav li:hover a {
+    color: white; /* Change text color on hover */
+    background-color: darkorchid;
 }
 
 article {
@@ -53,7 +90,7 @@ section::after {
 
 /* Style the footer */
 footer {
-    background-color: #1847a0; /* Violet color */
+    background-color: #1890a0; /* Violet color */
     padding: 10px;
     text-align: center;
     color: white;
@@ -65,4 +102,70 @@ footer {
         width: 100%;
         height: auto;
     }
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: darkblue; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.btn:hover {
+    background-color: violet; 
+    color: white;
+}
+
+
+/* Style the list of players */
+.player-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid */
+    grid-gap: 10px;
+    list-style: none;
+    padding: 0;
+}
+
+.player-list-item {
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.player-list-item a {
+    color: #1880a0; /* Adjust text color */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.player-list-item a:hover {
+    color: darkorchid; /* Change text color on hover */
+}
+
+.product-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.product-item {
+    margin-bottom: 10px;
+    background-color: #f9f9f9; /* Light grey background */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.product-link {
+    text-decoration: none;
+    color: #333;
+}
+
+.product-link:hover {
+    text-decoration: underline;
+    color: #555;
 }

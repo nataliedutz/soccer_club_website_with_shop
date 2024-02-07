@@ -3,8 +3,11 @@
 {% block content %}
 <h1>This is the roster of our Team.</h1>
 <p>Here you find all the information about our players:</p>
-{% for player in players %}
-<li><a href="{% url 'player_data' player.id %}">{{player.name}}</a></li>
-{% endfor %}
-
+<ul class="player-list">
+    {% for player in players %}
+    <li class="player-list-item">
+        <a href="{% url 'player_data' player.id %}">{{ player.name }}</a>
+    </li>
+    {% endfor %}
+</ul>
 {% endblock content %}
