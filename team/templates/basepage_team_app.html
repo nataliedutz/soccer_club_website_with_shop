@@ -7,7 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <style>
-      
+        /* Add this style */
+        .player-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .player-info,
+        .additional-info {
+            flex: 1;
+            padding: 20px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+        }
     </style>
 </head>
 

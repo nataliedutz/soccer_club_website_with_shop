@@ -9,8 +9,8 @@ class Player(models.Model):
     position = models.CharField(max_length=100)
 
     
-    # def __str__(self):
-    #     return self.name
+    def __str__(self):
+        return self.name
     
     # class Meta:
     #     verbose_name = "Player"
@@ -21,12 +21,19 @@ class Game(models.Model):
     opponent = models.CharField(max_length=255)
     score = models.CharField(max_length=10)
 
+    def __str__(self):
+        return f"Game against {self.opponent}"
+
 
 class GoalsScored(models.Model):
     """The Goals Scored Model"""
     game = models.ForeignKey(Game, on_delete=models.CASCADE, to_field='game_date')
     minute = models.PositiveBigIntegerField()
-    player = models.ForeignKey(Player, on_delete=models.CASCADE, to_field='name')
+    player = models.ForeignKey(Player, on_delete=models.CASCADE, to_field='name', related_name='goals_scored')
+
+    def __str__(self):
+        return f"Goal made by {self.player.name} at {self.game.game_date}"
+
 
 class Profile(models.Model):
     """The Profile Model"""
@@ -35,8 +42,14 @@ class Profile(models.Model):
     weight = models.FloatField()
     nationality = models.CharField(max_length=255)
 
+    def __str__(self):
+        return f"Profile of {self.player}"
+
 class Team(models.Model):
     "The Team Model"
     team_name = models.CharField(max_length = 255)
     town = models.CharField(max_length = 255)
     color = models.CharField(max_length = 255)
+
+    def __str__(self):
+        return self.team_name

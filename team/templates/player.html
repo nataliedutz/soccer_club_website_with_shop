@@ -1,12 +1,41 @@
 {% extends "basepage_team_app.html" %}
 
 {% block content %}
-<h1>About Player {{player.id}}</h1>
-<p>Name: {{ player.name }}</p>
-<p>Age: {{ player.age }}</p>
-<p>Position: {{ player.position }}</p>
-<p>Player Profile:</p>
-<p>Height: {{ player.profile.height }}</p>
-<p>Weight: {{ player.profile.weight }}</p>
-<p>Nationality: {{ player.profile.nationality }}</p>
+<div class="player-container">
+    <div class="player-info">
+        <h1>About Player {{ player.name }}</h1>
+        <p>Name: {{ player.name }}</p>
+        <p>Age: {{ player.age }}</p>
+        <p>Position: {{ player.position }}</p>
+        <p>Player Profile:</p>
+        <p>Height: {{ player.profile.height }}</p>
+        <p>Weight: {{ player.profile.weight }}</p>
+        <p>Nationality: {{ player.profile.nationality }}</p>
+    </div>
+
+    <div class="additional-info">
+        <h2>Games Played</h2>
+        {% if player.goals_scored.all %}
+            <ul>
+                {% for goal in player.goals_scored.all %}
+                    <li>{{ goal.game.opponent }} - {{ goal.game.game_date }}</li>
+                {% endfor %}
+            </ul>
+
+            <h2>Goals Scored</h2>
+            <ul>
+                {% for goal in player.goals_scored.all %}
+                    <li>Goal scored against {{ goal.game.opponent }} at {{ goal.minute }}'</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No games played yet</p>
+        {% endif %}
+        
+        {% if not player.goals_scored.all %}
+            <h2>Goals Scored</h2>
+            <p>No goals scored yet</p>
+        {% endif %}
+    </div>
+</div>
 {% endblock content %}
