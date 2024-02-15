@@ -1,7 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from django.views import View
 from django.urls import reverse
-from .models import Item
+from .models import Item, Order
+from .forms import OrderForm
+
 
 class ShopHomePageView(View):
     def get(self, request):
@@ -16,7 +19,57 @@ class DetailedProductPageView(View):
     def get(self, request, product_id):
         # Retrieve the product object based on the provided ID
         product = get_object_or_404(Item, pk=product_id)
+        form = OrderForm()
         
         # Pass the product object to the template for rendering
         return render(request, 'detailed_product_page.html', {'product': product})
 
+    #@login_required
+    def post(self, request, product_id):
+        product = get_object_or_404(Item, pk=product_id)
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            order = form.save(commit=False)
+            order.user = request.user
+            order.item = product
+            order.save()
+
+            # Update item quantity or delete item
+            quantity = form.cleaned_data.get('quantity', 1)
+            product.quantity -= quantity
+            if product.quantity <= 0:
+                product.delete()
+            else:
+                product.save()
+
+            # Render order success template
+            return redirect('order_success')
+        return render(request, 'detailed_product_page.html', {'product': product, 'form': form})
+    
+def order_success_view(request):
+    return render(request, 'order_success.html')
+    
+# @login_required
+# def place_order(request):
+#     if request.method == 'POST':
+#         form = OrderForm(request.POST)
+#         if form.is_valid():
+#             order = form.save(commit=False)
+#             order.user = request.user
+#             order.save()
+
+#             # Update item quantity or delete item
+#             item_id = request.POST.get('product_id')
+#             quantity = int(request.POST.get('quantity', 1))
+#             item = get_object_or_404(Item, pk=item_id)
+#             item.quantity -= quantity
+#             if item.quantity <= 0:
+#                 item.delete()
+#             else:
+#                 item.save()
+
+#             # Render order success template
+#             return render(request, 'order_success.html')
+#     else:
+#         form = OrderForm()
+#     return render(request, 'detailed_product_page.html', {'form': form})
