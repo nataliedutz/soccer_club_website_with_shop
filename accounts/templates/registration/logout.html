@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>User Logout</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
 </head>
 <body>
-    <h2>User Logout</h2>
+    <h2>Logout</h2>
     <p>You have been logged out successfully.</p>
     <a href="{% url 'login' %}">Login Again</a>
+    <a href="{% url 'shop_home_page' %}">Back to Shop Homepage</a>
+    <a href="{% url 'about_page' %}">Back to Team Homepage</a>
+
+
 </body>
 </html>

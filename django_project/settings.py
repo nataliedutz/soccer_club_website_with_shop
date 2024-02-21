@@ -138,5 +138,5 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-LOGIN_REDIRECT_URL = 'team/home_page' 
-LOGOUT_REDIRECT_URL = 'team/home_page'
+LOGIN_REDIRECT_URL = 'shop_home_page' 
+LOGOUT_REDIRECT_URL = 'shop_home_page'

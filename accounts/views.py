@@ -1,7 +1,11 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LogoutView as BaseLogoutView
 from django.contrib.auth import logout as auth_logout
+#from django.views.generic import TemplateView
+
 
 def signup_view(request):
     if request.method == 'POST':
@@ -13,12 +17,23 @@ def signup_view(request):
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
 
-login_view = LoginView.as_view(template_name='registration/login.html')
-logout_view = LogoutView.as_view()
+class CustomLogoutView(BaseLogoutView):
+    next_page = reverse_lazy('shop_home_page') 
 
-def custom_logout(request):
-    auth_logout(request)
-    return redirect('login')  # Redirect to login page after logout
+    def dispatch(self, request, *args, **kwargs):
+        # Handle logout explicitly
+        auth_logout(request)
+        return redirect(self.next_page)
 
-def redirect_to_home(request):
-    return redirect('home_page')
+# class CustomLogoutView(TemplateView):
+#     template_name = 'registration/logout.html'
+
+# class CustomLoginView(LoginView):
+#     template_name = 'registration/login.html'
+
+# def custom_logout(request):
+#     auth_logout(request)
+#     return redirect('login')  # Redirect to login page after logout
+
+# def redirect_to_home(request):
+#     return redirect('shop:home_page')

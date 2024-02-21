@@ -1,6 +1,13 @@
-{% extends "basepage_shop_app.html" %}
+{% extends "base_shop.html" %}
 {% block content %}
 <title>Our Shop</title>
-</h1>This is our shop</h1>
+<body class="shop-page">
+<h1>This is our shop</h1>
 <h2>You find all the products in the Product List.</h2>
+<ul style="list-style-type: none; padding: 0;">
+    <li style="background-color: #f1f1f1; padding: 10px; border-radius: 5px;">
+        <a href="{% url 'product_list_page' %}" style="color: #1880a0; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='darkviolet'" onmouseout="this.style.color='#1880a0'">Product List</a>
+    </li>
+</ul>
+</body> 
 {% endblock content %}
