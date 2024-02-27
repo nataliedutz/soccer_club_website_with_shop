@@ -1,13 +1,15 @@
-{% extends "base_team.html" %}
+{% extends "index.html" %}
 
 {% block content %}
 <h1>This is the roster of our Team.</h1>
 <p>Here you find all the information about our players:</p>
-<ul class="player-list">
+<div class="player-list">
     {% for player in players %}
-    <li class="player-list-item">
-        <a href="{% url 'player_data' player.id %}">{{ player.name }}</a>
-    </li>
+    <div class="player-list-item">
+        <a href="{% url 'player_data' player.id %}">
+            <h3>{{ player.name }}</h3>
+        </a>
+    </div>
     {% endfor %}
-</ul>
+</div>
 {% endblock content %}
