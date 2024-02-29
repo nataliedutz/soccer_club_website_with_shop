@@ -8,4 +8,5 @@ urlpatterns = [
     path("", include("shop.urls")),
     path("", include("accounts.urls")),
     path("", include("post.urls")),
+    path('api/', include('api.urls')),  # api/posts/ and api/comments/
 ]

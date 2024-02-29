@@ -3,6 +3,8 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views.generic import TemplateView, DetailView
+from rest_framework import viewsets
+from .serializers import PostSerializer
 from .models import Post
 from .forms import PostForm, CommentForm
 
@@ -55,3 +57,7 @@ def add_comment(request, pk):
             comment.save()
             return HttpResponseRedirect(reverse('post_detail', args=[pk]))
     return HttpResponseRedirect(reverse('post_detail', args=[pk]))
+
+class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer

@@ -22,5 +22,6 @@ class PostSerializer(serializers.ModelSerializer):
             "title",
             "body",
             "created_at",
+            "comments"
         )
         model = Post
