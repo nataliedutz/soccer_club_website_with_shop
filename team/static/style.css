@@ -133,7 +133,7 @@ footer {
 }
 
 .player-list-item {
-    width: 200px; /* Set a fixed width for consistency */
+    width: 160px; /* Set a fixed width for consistency */
     display: inline-block;
     padding: 10px;
     margin: 5px; /* Adjust margin as needed */

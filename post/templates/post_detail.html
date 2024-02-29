@@ -1,0 +1,31 @@
+{% extends 'base_post.html' %}
+
+{% block content %}
+  <!-- Post Details -->
+  <h2>{{ post.title }}</h2>
+  <p><strong>Author:</strong> {{ post.author }}</p>
+  <p><strong>Date: </strong>{{ post.created_at|date:"M. d, Y, H:i" }}</p>
+  <p>{{ post.body }}</p>
+
+  <!-- Comments -->
+  <h3>Comments</h3>
+  <ul>
+    {% for comment in comments %}
+      <li>
+        <p>{{ comment.author }} says:</p>
+        <p>{{ comment.body }}</p>
+        <p>Date: {{ comment.created_at|date:"M. d, Y, H:i" }}</p>
+      </li>
+    {% empty %}
+      <li>No comments yet.</li>
+    {% endfor %}
+  </ul>
+
+  <!-- Comment Form -->
+  <form method="post" action="{% url 'add_comment' post.pk %}" class="comment-form">
+    {% csrf_token %}
+    <label for="body">Add a comment:</label><br>
+    <textarea id="body" name="body"></textarea><br>
+    <button type="submit">Submit</button>
+  </form>
+{% endblock %}

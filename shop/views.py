@@ -20,9 +20,17 @@ class DetailedProductPageView(View):
         product = get_object_or_404(Item, pk=product_id)
         form = OrderForm()
         return render(request, 'detailed_product_page.html', {'product': product, 'form': form})
-
+    
+    #@login_required
     def post(self, request, product_id):
         product = get_object_or_404(Item, pk=product_id)
+
+        # # Check if the user is logged in
+        # if not request.user.is_authenticated:
+        #     # If not logged in, display a message and redirect to the login page
+        #     messages.warning(request, 'Please log in to be able to make an order.')
+        #     return redirect('login')
+
         if request.method == 'POST':
             form = OrderForm(request.POST)
             if form.is_valid():
@@ -47,7 +55,8 @@ class DetailedProductPageView(View):
         else:
         # Form is not valid, re-render the page with the form and product
             return render(request, 'detailed_product_page.html', {'product': product, 'form': form})
-
+        
+@login_required
 def order_success_view(request):
     return render(request, 'order_success.html')
 

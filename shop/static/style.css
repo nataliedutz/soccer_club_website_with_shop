@@ -4,11 +4,14 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
+    background-image: url('static/footballs.jpg'); 
     background-color: #f5f5f5; /* Light grey background */
     color: #333333; /* Dark grey text color */
     margin: 0;
     padding: 0;
 }
+
+
 
 /* Header styles */
 header {

@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     "team.apps.TeamConfig",
     "shop.apps.ShopConfig",
     "accounts.apps.AccountsConfig",
+    "post.apps.PostConfig",
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -140,3 +142,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_REDIRECT_URL = 'shop_home_page' 
 LOGOUT_REDIRECT_URL = 'shop_home_page'
+LOGIN_URL = '/login/'
+

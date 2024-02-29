@@ -1,0 +1,33 @@
+{% extends 'base_post.html' %}
+
+{% block content %}
+  <h1>Please fill out the form below to leave a post.</h1>
+
+  <!-- Post Form -->
+  <form method="post" action="{% url 'post_list' %}">
+    {% csrf_token %}
+    <input type="hidden" name="author" value="{{ request.user.id }}"> <!-- Hidden input field for author -->
+    <label for="title">Title:</label><br>
+    <input type="text" id="title" name="title"><br>
+    <label for="body">Body:</label><br>
+    <textarea id="body" name="body"></textarea><br>
+    <button type="submit">Submit</button>
+  </form>
+
+   <!-- Existing Posts -->
+   <h1>Existing Posts</h1>
+   <ul class="post-list">
+     {% for post in posts %}
+       <li class="post-item">
+         <div class="post-header">
+           <strong>Title:</strong> <a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a><br>
+           <strong>Author:</strong> {{ post.author }}<br>
+           <strong>Date:</strong> {{ post.created_at|date:"M. d, Y, H:i" }}<br>
+         </div>
+         <div class="post-body">
+           <strong>Excerpt:</strong> {{ post.body|truncatewords:20 }}
+         </div>
+       </li>
+     {% endfor %}
+   </ul>
+ {% endblock %}
