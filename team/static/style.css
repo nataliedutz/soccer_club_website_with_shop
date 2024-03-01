@@ -4,11 +4,15 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-image: url('static/footballs.jpg'); 
+    background-image: url('static/footballs.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    color: black; /* Text color on top of the background */
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Style the header */
@@ -77,8 +81,9 @@ article {
     padding: 20px;
     width: 70%;
     background-color: #f1ecec; /* Light grey color */
-    height: 400px;
+    height: 1000px;
     color: #000000; /* Text color (black) */
+    overflow-y: auto; 
 }
 
 /* Clear floats after the columns */
@@ -88,8 +93,18 @@ section::after {
     clear: both;
 }
 
+.wrapper {
+    flex: 1;
+    background-color: #f1ecec;
+    padding: 20px;
+    border-radius: 5px;
+}
+
 /* Style the footer */
 footer {
+    position: fixed; /* Set the position to fixed */
+    bottom: 0; /* Align the footer to the bottom of the viewport */
+    width: 100%;
     background-color: #1890a0; /* Violet color */
     padding: 10px;
     text-align: center;
@@ -101,13 +116,14 @@ footer {
     nav, article {
         width: 100%;
         height: auto;
+
     }
 }
 
 .btn {
     display: inline-block;
     padding: 10px 20px;
-    background-color: darkblue; 
+    background-color: rgb(24, 154, 163); 
     color: white;
     border: none;
     border-radius: 5px;
@@ -118,35 +134,35 @@ footer {
 }
 
 .btn:hover {
-    background-color: violet; 
+    background-color: darkviolet; 
     color: white;
 }
 
 
 /* Style the list of players */
 .player-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid */
-    grid-gap: 10px;
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: flex-start; /* Distribute items evenly across the container */
     list-style: none;
     padding: 0;
 }
 
 .player-list-item {
-    width: 160px; /* Set a fixed width for consistency */
-    display: inline-block;
+    width: 15%; /* Adjust the width of each player box */
     padding: 10px;
-    margin: 5px; /* Adjust margin as needed */
+    margin: 10px; /* Add margin for spacing */
     border-radius: 5px;
     background-color: #1880a0;
     color: white;
-    text-align: center; /* Center the text */
+    text-align: center;
     transition: background-color 0.3s, color 0.3s;
 }
 
+
 .player-list-item a {
-    text-decoration: none; /* Remove underline from the anchor tag */
-    color: inherit; /* Inherit color from the parent element */
+    text-decoration: none;
+    color: inherit;
 }
 
 .player-list-item:hover {
@@ -185,4 +201,49 @@ footer {
 
 .additional-info {
     flex: 1;
+}
+
+
+.post-container {
+    background-color: #f9f9f9; /* Light grey background */
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px; /* Add some space between posts */
+  }
+  
+.post-body {
+    /* Additional styling for the post body */
+  }
+  
+.comment-container {
+    background-color: #eaf3f9; /* Light blue background */
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px; /* Add some space between comments */
+  }
+  
+.comment-text {
+    /* Additional styling for the comment text */
+  }
+  
+
+.post-link {
+    display: inline-block;
+    padding: 10px;
+    background-color: #2e979b; /* Light grey background */
+    color: #000000; /* Text color (black) */
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.post-link:hover {
+    background-color: darkorchid;
+    color: white;
+}
+
+.detail-image {
+    width: 100px; /* Set the width of the image */
+    height: auto; /* Maintain aspect ratio */
+    /* Additional styling as needed */
 }

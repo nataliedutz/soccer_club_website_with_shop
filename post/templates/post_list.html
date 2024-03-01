@@ -1,26 +1,31 @@
 {% extends 'base_post.html' %}
 
 {% block content %}
-  <h1>Please fill out the form below to leave a post.</h1>
+  <h1>To post, please fill out the form below:</h1>
 
   <!-- Post Form -->
+
   <form method="post" action="{% url 'post_list' %}">
     {% csrf_token %}
     <input type="hidden" name="author" value="{{ request.user.id }}"> <!-- Hidden input field for author -->
-    <label for="title">Title:</label><br>
-    <input type="text" id="title" name="title"><br>
-    <label for="body">Body:</label><br>
-    <textarea id="body" name="body"></textarea><br>
-    <button type="submit">Submit</button>
+    <div class="form-group">
+        <label for="title">Title:</label><br>
+        <input class="form-control" type="text" id="title" name="title" placeholder="Your post title"><br> <!-- Add form-control class for styling -->
+    </div>
+    <div class="form-group">
+        <label for="body">Body:</label><br>
+        <textarea class="form-control" id="body" name="body" rows="10" cols="50" placeholder="Your post"></textarea><br> <!-- Increase rows and cols to make the textarea bigger -->
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button> <!-- Add btn and btn-primary classes for styling -->
   </form>
 
    <!-- Existing Posts -->
-   <h1>Existing Posts</h1>
+   <h1>Latest Posts</h1>
    <ul class="post-list">
      {% for post in posts %}
        <li class="post-item">
          <div class="post-header">
-           <strong>Title:</strong> <a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a><br>
+           <strong>Title:</strong> <a href="{% url 'post_detail' post.pk %}" class="post-link">{{ post.title }}</a><br>
            <strong>Author:</strong> {{ post.author }}<br>
            <strong>Date:</strong> {{ post.created_at|date:"M. d, Y, H:i" }}<br>
          </div>

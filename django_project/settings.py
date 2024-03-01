@@ -145,3 +145,11 @@ LOGIN_REDIRECT_URL = 'shop_home_page'
 LOGOUT_REDIRECT_URL = 'shop_home_page'
 LOGIN_URL = '/login/'
 
+# Define the base directory for your project
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Define the path to the media folder
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Define the URL for serving media files
+MEDIA_URL = '/media/'

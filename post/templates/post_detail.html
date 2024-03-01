@@ -2,19 +2,27 @@
 
 {% block content %}
   <!-- Post Details -->
-  <h2>{{ post.title }}</h2>
-  <p><strong>Author:</strong> {{ post.author }}</p>
-  <p><strong>Date: </strong>{{ post.created_at|date:"M. d, Y, H:i" }}</p>
-  <p>{{ post.body }}</p>
+  <div class="post-container">
+    <h2>{{ post.title }}</h2>
+    <p><strong>Author:</strong> {{ post.author }}</p>
+    <p><strong>Date: </strong>{{ post.created_at|date:"M. d, Y, H:i" }}</p>
+    <div class="post-body">
+      {{ post.body }}
+    </div>
+  </div>
 
   <!-- Comments -->
   <h3>Comments</h3>
   <ul>
     {% for comment in comments %}
       <li>
-        <p>{{ comment.author }} says:</p>
-        <p>{{ comment.body }}</p>
-        <p>Date: {{ comment.created_at|date:"M. d, Y, H:i" }}</p>
+        <div class="comment-container">
+          <p>{{ comment.author }} says:</p>
+          <div class="comment-text">
+            {{ comment.text }}
+          </div>
+          <p>Date: {{ comment.created_at|date:"M. d, Y, H:i" }}</p>
+        </div>
       </li>
     {% empty %}
       <li>No comments yet.</li>
@@ -22,10 +30,20 @@
   </ul>
 
   <!-- Comment Form -->
-  <form method="post" action="{% url 'add_comment' post.pk %}" class="comment-form">
+  <form method="post" action="{% url 'add_comment' pk=post.pk %}">
     {% csrf_token %}
-    <label for="body">Add a comment:</label><br>
-    <textarea id="body" name="body"></textarea><br>
-    <button type="submit">Submit</button>
+    <input type="hidden" name="author" value="{{ request.user.id }}"> <!-- Include a hidden input field to set the author -->
+    <input type="hidden" name="post" value="{{ post.pk }}"> <!-- Include a hidden input field to set the post ID -->
+    <div class="form-group">
+        <label for="id_text">Your comment:</label>
+        <br>
+        {{ comment_form.text }}
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
   </form>
+
+
+
 {% endblock %}
