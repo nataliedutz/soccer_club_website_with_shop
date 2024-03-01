@@ -81,7 +81,7 @@ article {
     padding: 20px;
     width: 70%;
     background-color: #f1ecec; /* Light grey color */
-    height: 1000px;
+    min-height: 1000px;
     color: #000000; /* Text color (black) */
     overflow-y: auto; 
 }
