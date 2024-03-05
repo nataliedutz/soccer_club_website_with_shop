@@ -10,7 +10,6 @@ body {
     background-position: center;
     margin: 0;
     padding: 0;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
@@ -20,7 +19,7 @@ header {
     background-color: #1890a0; 
     padding: 30px;
     text-align: center;
-    font-size: 35px;
+    font-size: 30px;
     color: #000000;}
 
 .header-link {
@@ -81,7 +80,7 @@ article {
     padding: 20px;
     width: 70%;
     background-color: #f1ecec; /* Light grey color */
-    min-height: 1000px;
+    min-height: 1300px;
     color: #000000; /* Text color (black) */
     overflow-y: auto; 
 }
@@ -244,6 +243,9 @@ footer {
 
 .detail-image {
     width: 100px; /* Set the width of the image */
-    height: auto; /* Maintain aspect ratio */
-    /* Additional styling as needed */
+    height: auto; 
+}
+
+.logged-in-message {
+    font-size: 15px; 
 }

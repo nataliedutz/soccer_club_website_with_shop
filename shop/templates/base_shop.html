@@ -13,6 +13,7 @@
         <div class="header-content">
             <h2>Python FC</h2>
             {% if user.is_authenticated %}
+            <p class="logged-in-message">You are logged in as {{ user.username }}</p>
             <a href="{% url 'logout' %}" class="header-link">Logout</a>
             {% else %}
             <a href="{% url 'login' %}" class="header-link">Login</a>

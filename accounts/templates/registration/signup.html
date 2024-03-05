@@ -4,13 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <body>
-    <h2>Sign Up</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Sign Up</button>
-    </form>
+    {% if user.is_authenticated %}
+        <h2>Welcome, {{ user.username }}</h2>
+        <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+        <div class="container">
+            <h2>Sign Up</h2>
+            <form method="post">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password1" placeholder="Password" required>
+                <input type="password" name="password2" placeholder="Confirm Password" required>
+                <button type="submit">Sign Up</button>
+            </form>
+            <div class="additional-links">
+                <div class="link-box">
+                    <a href="{% url 'login' %}" class="link-button">Already have an account? Log in</a>
+                </div>
+                <div class="link-box">
+                    <a href="{% url 'password_reset' %}" class="link-button forgot-password">Forgot Password?</a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
 </body>
 </html>

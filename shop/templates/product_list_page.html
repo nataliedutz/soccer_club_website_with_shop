@@ -1,12 +1,18 @@
 {% extends "base_shop.html" %}
+
 {% block content %}
-    <h1>Our Product List</h1>
-    <p>Please click on the product name next to the image to see more info.</p>
+    <h1>Our Products</h1>
+    <p>Please click on the product name below the image to see more info and to order.</p>
     <ul class="product-list">
         {% for product in products %}
             <li class="product-item">
-                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="detail-image">
-                <a href="{% url 'detailed_product_page' product.id %}" class="product-link">{{ product.name }} {{ product.size }}</a>
+                
+                <div class="product-image">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="detail-image">
+                </div>
+                <div class="product-info">
+                    <a href="{% url 'detailed_product_page' product.id %}" class="btn btn-primary">{{ product.name }} {{ product.size }}</a>
+                </div>
             </li>
         {% endfor %}
     </ul>
