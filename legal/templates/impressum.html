@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressum</title>
+    <style>
+        /* Define your link styling here */
+        .back-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .back-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- header content here -->
+    </header>
+    <main>
+        <h1>Impressum</h1>
+        <p>Angaben gemäß § 5 TMG:</p>
+        <p>Natalie Dutz<br>
+        Schendelgasse 8<br>
+        10119 Berlin</p>
+        <p>Kontakt:</p>
+        <p>E-Mail: nataliedutz@gmx.de</p>
+        <p>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</p>
+        <p>Natalie Dutz<br>
+        Schendelgasse 8<br>
+        10119 Berlin</p>
+        <p>Haftung für Inhalte:</p>
+        <p>Als Diensteanbieter bin ich gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.
+            Nach §§ 8 bis 10 TMG bin ich als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen
+            zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+    </main>
+    <footer>
+        <a href="{% url 'team:home_page' %}" class="back-link">Back to Team Home Page</a>
+    </footer>
+</body>
+</html>

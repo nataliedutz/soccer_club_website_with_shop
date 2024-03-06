@@ -16,6 +16,15 @@
             <h2>Sign Up</h2>
             <form method="post">
                 {% csrf_token %}
+                {% if form.errors %}
+                <ul class="errorlist">
+                    {% for field, errors in form.errors.items %}
+                        {% for error in errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+                {% endif %}
                 <input type="text" name="username" placeholder="Username" required>
                 <input type="password" name="password1" placeholder="Password" required>
                 <input type="password" name="password2" placeholder="Confirm Password" required>

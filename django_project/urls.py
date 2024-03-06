@@ -10,5 +10,6 @@ urlpatterns = [
     path("", include("shop.urls")),
     path("", include("accounts.urls")),
     path("", include("post.urls")),
+    path("", include("legal.urls")),
     path('api/', include('api.urls')),  # api/posts/ and api/comments/
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

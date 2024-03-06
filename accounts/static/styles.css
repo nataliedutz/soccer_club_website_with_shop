@@ -71,3 +71,16 @@ button[type="submit"]:hover {
     margin-top: 20px;
     text-align: center;
 }
+
+.profile-info {
+    text-align: left; /* Align profile info to the left */
+}
+
+.orders {
+    margin-top: 20px; /* Add space between profile and orders */
+}
+
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto; /* Center the container horizontally */
+}

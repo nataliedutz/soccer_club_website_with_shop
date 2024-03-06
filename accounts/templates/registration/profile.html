@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>User Profile</h1>
+        
+        <!-- Display user's profile information -->
+        <div class="profile-info">
+            <p><strong>Username:</strong> {{ user.username }}</p>
+            <p><strong>First Name:</strong> {{ user.profile.first_name }}</p>
+            <p><strong>Last Name:</strong> {{ user.profile.last_name }}</p>
+            <p><strong>Birthday:</strong> {{ user.profile.birthday }}</p>
+            <p><strong>Address:</strong> {{ user.profile.address }}</p>
+            <a href="{% url 'edit_profile' %}" class="link-button">Edit Profile</a>
+
+        </div>
+        <div class="orders">
+        <h2>Your Orders</h2>
+        {% if orders %}
+            <ul>
+            {% for order in orders %}
+                <li>
+                    <p><strong>Order ID:</strong> {{ order.id }}<br>
+                    <p><strong>Item:</strong> {{ order.item.name }}<br>
+                    <p><strong>Quantity:</strong> {{ order.quantity }}<br>
+                    <p><strong>Order Date:</strong> {{ order.order_date }}
+                </li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No orders found.</p>
+        {% endif %}
+        </div>
+    </div>
+</body>
+</html>

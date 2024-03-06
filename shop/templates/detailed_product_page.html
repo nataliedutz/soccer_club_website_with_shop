@@ -10,9 +10,7 @@
 
     <form method="post" action="{% url 'detailed_product_page' product_id=product.id %}">
         {% csrf_token %}
-        <input type="hidden" name="product_id" value="{{ product.id }}">
-        <label for="quantity">Quantity:</label>
-        <input type="number" name="quantity" id="quantity" value="1" min="1"><br>
+        {{ form.as_p }} 
         <input type="submit" class="btn btn-primary" value="Place Order" style="margin-top: 20px;">
     </form>
     

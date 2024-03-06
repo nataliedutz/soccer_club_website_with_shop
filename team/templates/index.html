@@ -15,6 +15,7 @@
             <h2>Python FC</h2>
             {% if user.is_authenticated %}
             <p class="logged-in-message">You are logged in as {{ user.username }}</p>
+            <a href="{% url 'profile' %}" class="header-link">Your Profile</a>
             <a href="{% url 'logout' %}" class="header-link">Logout</a>
             {% else %}
             <a href="{% url 'login' %}" class="header-link">Login</a>
@@ -27,9 +28,9 @@
     <section>
         <nav>
             <ul>
-                <li><a href="{% url 'home_page' %}"> Home</a></li>
-                <li><a href="{% url 'about_page' %}"> About</a></li>
-                <li><a href="{% url 'players_page' %}"> Players</a></li>
+                <li><a href="{% url 'team:home_page' %}"> Home</a></li>
+                <li><a href="{% url 'team:about_page' %}"> About</a></li>
+                <li><a href="{% url 'team:players_page' %}"> Players</a></li>
                 <li><a href="{% url 'shop_home_page' %}"> Shop</a></li>
                 <li><a href="{% url 'post_list' %}"> Blog</a></li>
 
@@ -43,7 +44,7 @@
     </div>   
     </section>
     <footer>
-        <p>Copyright Python FC</p>
+        <p>Copyright 2024 Natalie Dutz <a href="{% url 'legal:disclaimer' %}">Disclaimer</a> <a href="{% url 'legal:impressum' %}">Impressum</a> </p>
     </footer>
 
 </body>

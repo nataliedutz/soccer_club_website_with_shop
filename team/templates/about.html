@@ -1,13 +1,14 @@
 {% extends "index.html" %}
+{% load static %}
 
 {% block content %}
-<h1>This is the About page of our Team</h1>
-<p>This is the page with additional info about our team.</p>
+<h1>Python FC About</h1>
+<p>Here you find additional info about our team.</p>
 <div>
     <p>Additional Information 1</p>
     <p>Additional Information 2</p>
     <p>Additional Information 3</p>
-    <p>Additional Information 4</p>
-    <p>Additional Information 5</p>
+   
     </div>
+    <img src="{% static 'playingsoccer.png' %}" alt="Python FC playing soccer">   
 {% endblock content %}

@@ -8,6 +8,8 @@ from .views import (
 )
 from django.contrib.auth import views as auth_views
 
+app_name = 'team'
+
 urlpatterns = [
     path("", HomePageView.as_view(), name="home_page"),
     path("about/", AboutPageView.as_view(), name="about_page"),

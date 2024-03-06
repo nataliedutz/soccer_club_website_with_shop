@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
-
+from accounts.models import Profile
 
 class Item(models.Model):
 
@@ -16,7 +16,7 @@ class Item(models.Model):
 
     
 class Order(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
     order_date = models.DateTimeField(auto_now_add=True)
