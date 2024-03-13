@@ -42,8 +42,11 @@ header {
 
 /* Create two columns/boxes that float next to each other */
 nav {
+    background-color: #1890a0; 
+
     float: left;
     width: 15%; /* Set the width to 20% of the container */
+    min-height: 1300px;
 }
 
 nav ul {
@@ -76,14 +79,15 @@ nav li:hover a {
 }
 
 article {
-    float: left;
     padding: 20px;
     width: 70%;
-    background-color: #f1ecec; /* Light grey color */
+    background-color: #f1ecf0; /* Light grey color */
     min-height: 1300px;
     color: #000000; /* Text color (black) */
     overflow-y: auto; 
 }
+
+
 
 /* Clear floats after the columns */
 section::after {

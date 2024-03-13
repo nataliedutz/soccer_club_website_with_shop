@@ -11,7 +11,7 @@
     <form method="post" action="{% url 'detailed_product_page' product_id=product.id %}">
         {% csrf_token %}
         {{ form.as_p }} 
-        <input type="submit" class="btn btn-primary" value="Place Order" style="margin-top: 20px;">
+        <input type="submit" class="btn btn-primary" value="Order now" style="margin-top: 20px;">
     </form>
     
 {% endblock %}

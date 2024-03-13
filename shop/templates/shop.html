@@ -1,15 +1,17 @@
 {% extends "base_shop.html" %}
 {% block content %}
 <title>Our Shop</title>
-<body class="shop-page">
+<body>
+<div class="article"> 
 <h2>Shop</h2>
-<h1>You find all our products in the Product List.</h1>
-<h1>Please click on the link below to see the list with all our products.</h1>
+<h3>You find all our products in the Product List.</h3>
+<h3>Please click on the link below to see the list with all our products.</h3>
 
 <ul style="list-style-type: none; padding: 0;">
-    <li style="background-color: #f1f1f1; padding: 10px; border-radius: 5px;">
+    <li>
         <a href="{% url 'product_list_page' %}" class="btn btn-primary">Product List</a>
     </li>
 </ul>
+</div> 
 </body> 
 {% endblock content %}

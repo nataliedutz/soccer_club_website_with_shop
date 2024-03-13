@@ -12,7 +12,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+from django.core.management.utils import get_random_secret_key
 
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,13 +23,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-7v_q!)9f0v#7x^o)y8^q7%-ol=2(alr416_mivp2te-=jg*(fc"
+# Set SECRET_KEY with a default value of 'change-me'
+SECRET_KEY = os.getenv('SECRET_KEY', get_random_secret_key())
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Set DEBUG with a default value of '1' and convert it to a boolean
+DEBUG = os.getenv('DEBUG', '1') == '1'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "127.0.0.1").split(",")
+
+# # SECURITY WARNING: keep the secret key used in production secret!
+# SECRET_KEY = "django-insecure-7v_q!)9f0v#7x^o)y8^q7%-ol=2(alr416_mivp2te-=jg*(fc"
+
+# # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = True
+
+#ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -86,15 +97,36 @@ WSGI_APPLICATION = "django_project.wsgi.application"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'soccer_team',
-        'USER': 'postgres',
-        'PASSWORD': 'oatley123',
-        'HOST': 'localhost', 
-        'PORT': '5432',      
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+
+POSTGRES_DB = os.getenv("POSTGRES_DB") # database name
+POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD") # database user password
+POSTGRES_USER = os.getenv("POSTGRES_USER") # database username
+POSTGRES_HOST = os.getenv("POSTGRES_HOST") # database host
+POSTGRES_PORT = os.getenv("POSTGRES_PORT") # database port
+
+POSTGRES_READY = (
+    POSTGRES_DB is not None
+    and POSTGRES_PASSWORD is not None
+    and POSTGRES_USER is not None
+    and POSTGRES_HOST is not None
+    and POSTGRES_PORT is not None
+)
+if POSTGRES_READY:
+    DATABASES = {
+        "default": {
+            "ENGINE": 'django.db.backends.postgresql_psycopg2',
+            "NAME": POSTGRES_DB,
+            "USER": POSTGRES_USER,
+            "PASSWORD": POSTGRES_PASSWORD,
+            "HOST": POSTGRES_HOST,
+            "PORT": POSTGRES_PORT,
+        }
+    }
 
 
 
@@ -154,7 +186,7 @@ LOGOUT_REDIRECT_URL = 'team:home_page'
 LOGIN_URL = '/login/'
 
 # Define the base directory for your project
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Define the path to the media folder
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
